@@ -25,4 +25,7 @@ set(SYSTEMC_LIBRARIES ${SYSTEMC_HOME}/lib-linux64/libsystemc.a ${SYSTEMC_HOME}/l
 set (CMAKE_CXX_FLAGS "-pthread")
 
 # Subdirectories
+add_subdirectory(Exercicio1)
 add_subdirectory(Week1)
+add_subdirectory(Project1)
+add_subdirectory(Examples)

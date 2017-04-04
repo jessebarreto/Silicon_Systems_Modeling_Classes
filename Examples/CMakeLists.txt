@@ -1,0 +1,11 @@
+
+add_subdirectory(ExampleHalfAdder)
+add_subdirectory(ExampleMultiplexer)
+add_subdirectory(ExampleFlipFlopD)
+add_subdirectory(ExampleRegister)
+add_subdirectory(ExampleRegistersMIPS32)
+add_subdirectory(ExampleULA32)
+add_subdirectory(ExampleThreeStateBuffer)
+add_subdirectory(ExampleThreeStateDecoder)
+add_subdirectory(ExampleThreeStateBuses)
+add_subdirectory(ExampleFSMMealy)

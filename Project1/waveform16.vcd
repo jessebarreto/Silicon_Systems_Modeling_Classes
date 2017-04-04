@@ -1,0 +1,204 @@
+$date
+     Apr 03, 2017       22:21:07
+$end
+
+$version
+ SystemC 2.3.1-Accellera --- Mar 21 2017 12:32:55
+$end
+
+$timescale
+     1 ps
+$end
+
+$scope module SystemC $end
+$var wire    3  aaaaa  opcode [2:0]  $end
+$var wire   16  aaaab  A [15:0]  $end
+$var wire   16  aaaac  B [15:0]  $end
+$var wire   16  aaaad  Z [15:0]  $end
+$var wire    1  aaaae  zero       $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+b0 aaaaa
+b111 aaaab
+b110 aaaac
+b1101 aaaad
+0aaaae
+$end
+
+#1
+b1000 aaaab
+b1010 aaaac
+b10010 aaaad
+
+#2
+b10 aaaab
+b10 aaaac
+b100 aaaad
+
+#3
+b0 aaaab
+b0 aaaac
+b0 aaaad
+1aaaae
+
+#4
+b1 aaaaa
+b111 aaaab
+b110 aaaac
+b1 aaaad
+0aaaae
+
+#5
+b1000 aaaab
+b1010 aaaac
+b1111111111111110 aaaad
+
+#6
+b10 aaaab
+b10 aaaac
+b0 aaaad
+1aaaae
+
+#7
+b0 aaaab
+b0 aaaac
+
+#8
+b10 aaaaa
+b111 aaaab
+b110 aaaac
+b110 aaaad
+0aaaae
+
+#9
+b1000 aaaab
+b1010 aaaac
+b1000 aaaad
+
+#10
+b10 aaaab
+b10 aaaac
+b10 aaaad
+
+#11
+b0 aaaab
+b0 aaaac
+b0 aaaad
+1aaaae
+
+#12
+b11 aaaaa
+b111 aaaab
+b110 aaaac
+b111 aaaad
+0aaaae
+
+#13
+b1000 aaaab
+b1010 aaaac
+b1010 aaaad
+
+#14
+b10 aaaab
+b10 aaaac
+b10 aaaad
+
+#15
+b0 aaaab
+b0 aaaac
+b0 aaaad
+1aaaae
+
+#16
+b100 aaaaa
+b111 aaaab
+b110 aaaac
+b1111111111111000 aaaad
+0aaaae
+
+#17
+b1000 aaaab
+b1010 aaaac
+b1111111111110111 aaaad
+
+#18
+b10 aaaab
+b10 aaaac
+b1111111111111101 aaaad
+
+#19
+b0 aaaab
+b0 aaaac
+b1111111111111111 aaaad
+
+#20
+b101 aaaaa
+b111 aaaab
+b110 aaaac
+b1 aaaad
+
+#21
+b1000 aaaab
+b1010 aaaac
+b10 aaaad
+
+#22
+b10 aaaab
+b10 aaaac
+b0 aaaad
+1aaaae
+
+#23
+b0 aaaab
+b0 aaaac
+
+#24
+b110 aaaaa
+b111 aaaab
+b110 aaaac
+b111 aaaad
+0aaaae
+
+#25
+b1000 aaaab
+b1010 aaaac
+b1000 aaaad
+
+#26
+b10 aaaab
+b10 aaaac
+b10 aaaad
+
+#27
+b0 aaaab
+b0 aaaac
+b0 aaaad
+1aaaae
+
+#28
+b111 aaaaa
+b111 aaaab
+b110 aaaac
+
+#29
+b1000 aaaab
+b1010 aaaac
+b1 aaaad
+0aaaae
+
+#30
+b10 aaaab
+b10 aaaac
+b0 aaaad
+1aaaae
+
+#31
+b0 aaaab
+b0 aaaac
+
