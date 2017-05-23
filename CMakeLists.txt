@@ -32,3 +32,6 @@ add_subdirectory(Project2)
 add_subdirectory(Project3)
 add_subdirectory(Project4)
 add_subdirectory(Examples)
+
+# Old Noc
+#add_subdirectory(OldNoC)

@@ -20,12 +20,17 @@ SC_MODULE(MemoryBlock)
     MemoryBlock(const sc_module_name& name, unsigned memorySize) : sc_module(name)
     {
         _memorySize = memorySize;
-        _memoryData = new uint16_t(_memorySize);
+        _memoryData = new uint16_t[_memorySize];
 
         loadProgram(_memoryData);
 
         SC_THREAD(read);
         SC_THREAD(write);
+    }
+
+    ~MemoryBlock()
+    {
+        delete _memoryData;
     }
 
     uint16_t *getMemoryReference();

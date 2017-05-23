@@ -17,16 +17,16 @@
 
 SC_MODULE(SystemReq2)
 {
+    Bus memoryBus, registersBus;
+
+    sc_fifo<Estado*> fifoFetch, fifoDecode, fifoExecute;
+
     MemoryBlock memory;
     RegisterBlock registers;
 
     Fetch fetch;
     Decode decode;
     Execute execute;
-
-    Bus memoryBus, registersBus;
-
-    sc_fifo<Estado*> fifoFetch, fifoDecode, fifoExecute;
 
     SC_CTOR(SystemReq2) :
         memory("MemoryBlock", MAX_MEM),
@@ -41,11 +41,10 @@ SC_MODULE(SystemReq2)
         memory.busPort(memoryBus);
         registers.busPort(registersBus);
 
+        // Start
         fifoExecute.write(new Estado());
 
         // Processor Stages
-        // Start
-//        start.stateOut(fifoExecute);
         // Fetch
         fetch.memoryPort(memoryBus);
         fetch.registerPort(registersBus);

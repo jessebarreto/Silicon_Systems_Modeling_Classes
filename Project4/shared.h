@@ -157,6 +157,9 @@ void loadProgram(uint16_t *memory)
     memory[i] = gerainst(TIPO_J, i_J, $zero, 0xFE);
     i++;
 
+    for (;i < MAX_MEM; i++) {
+        memory[i] = 0x00;
+    }
 
 //    /* addi $1, 0 */
 //    memory[0] = gerainst(TIPO_J, i_ADDi, 1, 0 );
