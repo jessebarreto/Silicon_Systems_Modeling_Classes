@@ -7,13 +7,11 @@
 class IBusMaster : virtual public sc_interface
 {
 public:
-    virtual sc_event& writeMasterReqEvent(unsigned address, uint16_t& newValue) = 0;
+    virtual bool writeMaster(uint16_t *data, unsigned address, unsigned slaveId) = 0;
 
-    virtual sc_event& readMasterReqEvent(unsigned address) = 0;
+    virtual bool readMaster(uint16_t *data, unsigned address, unsigned slaveId) = 0;
 
-    virtual sc_event& readMasterRecEvent(uint16_t *data) = 0;
-
-    virtual sc_event& writeMasterRecEvent(uint16_t *data) = 0;
+    virtual uint16_t *getSlaveReference(unsigned slaveId) = 0;
 };
 
 #endif // IBUS_H

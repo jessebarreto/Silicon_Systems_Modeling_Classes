@@ -13,7 +13,12 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-const uint16_t MAX_MEM=1024;
+// Debug Variable
+#define DEBUG 1
+
+const int NUMBEROFREGISTERS = 16;
+
+const uint16_t MAX_MEM = 1024;
 
 const uint16_t write_int = 512;
 
@@ -154,7 +159,7 @@ void loadProgram(uint16_t *memory)
     memory[i] = gerainst(TIPO_J, i_ADDi, $t1, 1);
     i++;
     // j $zero, 50 - HALT RISC SIMULATION
-    memory[i] = gerainst(TIPO_J, i_J, $zero, 0xFE);
+    memory[i] = gerainst(TIPO_J, i_J, $zero, 0xFF - i - 2);
     i++;
 
     for (;i < MAX_MEM; i++) {

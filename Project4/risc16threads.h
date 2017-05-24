@@ -7,8 +7,6 @@
 
 SC_MODULE(Risc16Threads)
 {
-
-
     void start();
 
     void fetch();
@@ -26,7 +24,7 @@ SC_MODULE(Risc16Threads)
 
     {
         _memorySize = memorySize;
-        _memoryData = new uint16_t(_memorySize);
+        _memoryData = new uint16_t [_memorySize];
         _regBank[$zero] = 0; // Register 0
         _regBank[$pc] = 0; // Program Counter
 
@@ -73,7 +71,7 @@ void Risc16Threads::fetch()
 
         _instReg = _memoryData[_regBank[$pc]];
         _regBank[$pc]++;
-
+#if DEBUG
         if (_regBank[$pc] == 0xFF) { // HALT STATE
             std::cout << "End Risc Execution: " << std::endl;
             std::cout << "Registers: " << std::endl;
@@ -82,6 +80,7 @@ void Risc16Threads::fetch()
             dump_mem(_memoryData, 0, 60, 'H');
             break;
         }
+#endif
         _eventDecode.notify(SC_ZERO_TIME);
     }
 }

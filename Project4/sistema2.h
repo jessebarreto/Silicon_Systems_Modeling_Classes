@@ -17,45 +17,47 @@
 
 SC_MODULE(SystemReq2)
 {
-    Bus memoryBus, registersBus;
-
+    // Stage FIFOs
     sc_fifo<Estado*> fifoFetch, fifoDecode, fifoExecute;
 
+    // Memory and Registers Direct Access Blocks
     MemoryBlock memory;
     RegisterBlock registers;
 
+    // Connection Bus
+    Bus bus;
+
+    // Stages of the Processor
     Fetch fetch;
     Decode decode;
     Execute execute;
 
+    // Constructor
     SC_CTOR(SystemReq2) :
         memory("MemoryBlock", MAX_MEM),
-        registers("Registerblock"),
-        memoryBus("MemoryBus"),
-        registersBus("RegistersBus"),
+        registers("RegisterBlock"),
+        bus("Bus"),
         fetch("FetchStage"),
         decode("DecodeStage"),
         execute("ExecuteStage")
     {
-        // Memory and Register Block
-        memory.busPort(memoryBus);
-        registers.busPort(registersBus);
-
-        // Start
+        // Start execute Fifo
         fifoExecute.write(new Estado());
+
+        // Connect Slaves to Bus
+        bus.slavePort(registers);
+        bus.slavePort(memory);
 
         // Processor Stages
         // Fetch
-        fetch.memoryPort(memoryBus);
-        fetch.registerPort(registersBus);
+        fetch.busPort(bus);
         fetch.stateIn(fifoExecute);
         fetch.stateOut(fifoFetch);
         // Decode
         decode.stateIn(fifoFetch);
         decode.stateOut(fifoDecode);
         //Execute
-        execute.memoryPort(memoryBus);
-        execute.registerPort(registersBus);
+        execute.busPort(bus);
         execute.stateIn(fifoDecode);
         execute.stateOut(fifoExecute);
     }

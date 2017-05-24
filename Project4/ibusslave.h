@@ -7,13 +7,11 @@
 class IBusSlave : virtual public sc_interface
 {
 public:
-    virtual sc_event& writeSlaveReqEvent(uint16_t* data) = 0;
+    virtual bool writeSlave(uint16_t* data, unsigned address) = 0;
 
-    virtual sc_event& readSlaveReqEvent() = 0;
+    virtual bool readSlave(uint16_t *data, unsigned address) = 0;
 
-    virtual sc_event& writeSlaveRecEvent() = 0;
-
-    virtual sc_event& readSlaveRecEvent(uint16_t *data) = 0;
+    virtual uint16_t *getSlaveDataReference() = 0;
 };
 
 #endif // IBUSSLAVE_H

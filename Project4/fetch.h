@@ -14,7 +14,7 @@ SC_MODULE(Fetch)
     sc_fifo_in<Estado*> stateIn;
     sc_fifo_out<Estado*> stateOut;
 
-    sc_port<IBusMaster> memoryPort, registerPort;
+    sc_port<IBusMaster> busPort;
 
     void thread();
 
@@ -32,17 +32,33 @@ void Fetch::thread()
 {
     for (;;) {
         std::cout << "Start Fetch Execution: " << std::endl;
-        _curState = stateIn.read();
 
-        // Read Register
-        registerPort->readMasterReqEvent($pc);
-        wait(registerPort->readMasterRecEvent(&_curState->pc));
+        // Get the State
+        _curState = stateIn->read();
 
-        // Read Memory
-        memoryPort->readMasterReqEvent(_curState->pc);
-        wait(memoryPort->readMasterRecEvent(&_curState->instruction));
+        // PC value
+        busPort->readMaster(&_curState->pc, $pc, 0);
 
-        stateOut.write(_curState);
+        // Instruction value from memory
+        busPort->readMaster(&_curState->instruction, _curState->pc, 1);
+
+        // Increment PC value
+        _curState->pc++;
+        busPort->writeMaster(&_curState->pc, $pc, 0);
+
+#if DEBUG
+        if (_curState->pc == 0xFF) { // HALT STATE
+            std::cout << "End Risc Execution: " << std::endl;
+            std::cout << "Registers: " << std::endl;
+            dump_breg(busPort->getSlaveReference(0));
+            std::cout << "Memory: " << std::endl;
+            dump_mem(busPort->getSlaveReference(1), 0, 60, 'H');
+            break;
+        }
+#endif
+
+        // Send State to next stage
+        stateOut->write(_curState);
     }
 }
 
