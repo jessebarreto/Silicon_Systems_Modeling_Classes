@@ -11,7 +11,8 @@
 #define SHELL_MIPS_H
 
 
-#include "systemc.h"
+#include <systemc.h>
+
 #include "shell_mips_if.h"
 
 struct shellmi_mips : public sc_module, public shell_mips_if {

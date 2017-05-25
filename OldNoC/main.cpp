@@ -2,11 +2,13 @@
  * - main.cpp
  * 
  * 
- *  Created by José Adalberto F. Gualeve  and Marlon Soudre on 07/07/15.
- *  Modified by José Adalberto F. Gualeve on 05/05/16
+ *  Created by Josï¿½ Adalberto F. Gualeve  and Marlon Soudre on 07/07/15.
+ *  Modified by Josï¿½ Adalberto F. Gualeve on 05/05/16
  *  Modified by Felipe Cabral e Eduardo Mesquita on 05/07/16.
  * Copyright 2015,2016 - All rights reserved 
  */
+
+#include <iostream>
 
 #include "systemc.h"
 #include "noc_common.h"
@@ -24,9 +26,7 @@
 #include "MIPS/memoria.h"
 #include "MIPS/mips.h"
 #include "MIPS/shell_mips.h"
-#include "MIPS/shell_memoria.cpp"
-
-#include <iostream>
+#include "MIPS/shell_memoria.h"
 
 using namespace std;
 
@@ -153,7 +153,7 @@ int sc_main ( int argc, char *argv[]) {
 	m1_shell.pmem(mem1);
 
 	mem.load_mem("buble.bin", 0x00400000);
-	mem.sw(0+M1_min,0x08100000);// Escrever instrução JUMP para o endereço 0x08100000 no endereço 0 (o termo "+ M1_min" vai ser subtraído na função hash posteriormente).
+	mem.sw(0+M1_min,0x08100000);// Escrever instruï¿½ï¿½o JUMP para o endereï¿½o 0x08100000 no endereï¿½o 0 (o termo "+ M1_min" vai ser subtraï¿½do na funï¿½ï¿½o hash posteriormente).
 	mem1.load_mem("buble.data", 0);
 	
 	cout << "Dados originais:" << endl << endl;
@@ -225,4 +225,3 @@ int sc_main ( int argc, char *argv[]) {
     system ("pause");
 	return 0;
 }
-
