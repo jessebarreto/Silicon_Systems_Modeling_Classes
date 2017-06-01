@@ -6,7 +6,7 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 
-#define DEBUG 0
+#define DEBUG 1
 
 class simple_bus_custom_mem :
         public sc_module,
@@ -63,7 +63,7 @@ simple_bus_custom_mem::~simple_bus_custom_mem()
 simple_bus_status simple_bus_custom_mem::read(int *data, unsigned int address)
 {
 #if DEBUG
-    std::cout << "[DEBUG] Read Custom Memory" << std::endl;
+    std::cout << "Leitura @" << address << std::endl;
 #endif
     *data = _memory[(address - _memoryStartAddress) / 4];
     return SIMPLE_BUS_OK;
@@ -72,7 +72,7 @@ simple_bus_status simple_bus_custom_mem::read(int *data, unsigned int address)
 simple_bus_status simple_bus_custom_mem::write(int *data, unsigned int address)
 {
 #if DEBUG
-    std::cout << "[DEBUG] Write Custom Memory" << std::endl;
+    std::cout << "Escrita @" << address << ", " << *data << std::endl;
 #endif
     _memory[(address - _memoryStartAddress) / 4] = *data;
     return SIMPLE_BUS_OK;

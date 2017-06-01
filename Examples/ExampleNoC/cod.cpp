@@ -22,7 +22,6 @@ void Cod::lerCod() {
 }
 
 //Thread principal
-
 void Cod::main() {
     	//Variavel para receber o flit proveniente do modulo
     sc_uint<32> tmp;
